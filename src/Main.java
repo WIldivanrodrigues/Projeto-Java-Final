@@ -29,6 +29,25 @@ public class Main {
         System.out.println("Data de nascimento: " + cadastro.getDataNascimento());
         System.out.println("E-mail: " + cadastro.getEmail());
 
+        //login
+
+        System.out.println("\n=-=-= Agora faça o Login =-=-=");
+
+        System.out.println("E-mail: ");
+        String loginEmail = teclado.next();
+
+        System.out.println("Senha: ");
+        int loginSenha = teclado.nextInt();
+
+        if (loginEmail.equals(cadastro.getEmail()) && loginSenha == cadastro.getSenha()) {
+            System.out.print("Login efetuado com sucesso");
+        } else {
+            System.out.print("Falha no login, E-mail ou senha incorretos.");
+        }
+
+
+
+
         teclado.close();
 
 
