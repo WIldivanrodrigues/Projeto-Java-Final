@@ -1,15 +1,42 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import model.CadastroUser;
+
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        Scanner teclado = new Scanner(System.in);
+        CadastroUser cadastro = new CadastroUser();
+
+        System.out.println("=-=-=-Cadastro de usuários-=-=-=");
+
+        System.out.println("Insira o seu nome: ");
+        cadastro.setNome(teclado.nextLine());
+
+        System.out.println("Insira sua data de nascimento: ");
+        cadastro.setDataNascimento(teclado.nextLine());
+
+        System.out.println("Insira o seu e-mail: ");
+        cadastro.setEmail(teclado.nextLine());
+
+        System.out.println("Insira sua senha: ");
+        cadastro.setSenha(teclado.nextInt());
+
+        System.out.println("\nUsuário cadastrado com sucesso!");
+
+        System.out.println("=-=- Dados cadastrados -=-=");
+        System.out.println("Nome: " + cadastro.getNome());
+        System.out.println("Data de nascimento: " + cadastro.getDataNascimento());
+        System.out.println("E-mail: " + cadastro.getEmail());
+
+        teclado.close();
+
+
+
+
+
+
+
+
     }
 }
