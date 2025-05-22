@@ -27,12 +27,9 @@ public class Main {
         System.out.println("Insira sua senha: ");
         cadastro.setSenha(teclado.nextLine());
 
-        System.out.println("\nUsuário cadastrado com sucesso!");
         controller.cadastrarUsuario(cadastro);
 
-        // Try-with-resources abre o BufferedWriter e fecha no final
-        // FileWriter("usuario.txt", true) true = append, não sobrescreve o arquivo
-
+        System.out.println("\nUsuário cadastrado com sucesso!");
 
         System.out.println("\n=-=-= Agora faça o Login =-=-=");
 

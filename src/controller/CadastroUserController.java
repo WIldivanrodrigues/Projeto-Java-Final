@@ -13,11 +13,11 @@ public class CadastroUserController {
     //Recebe o cadastro(user-service) salva e grava o arquivo no txt.
     public void cadastrarUsuario (CadastroUser user){
         cadastroUserService.salvar(user);
-        cadastroUserService.GravarEmArquivo(user);
+        cadastroUserService.gravarEmArquivo(user);
     }
 
     //Validação do login(retorna true or false(recebe da service)).
     public boolean fazerLogin(String email, String senha){
-        return cadastroUserService.ValidarLogin(email, senha);
+        return cadastroUserService.validarLogin(email, senha);
     }
 }

@@ -11,13 +11,17 @@ public class CadastroUserService  {
     List<CadastroUser> cadastros = new ArrayList<>();
     private static final String ARQUIVO = "usuario.txt";
 
-    public void salvar(CadastroUser user){
-        cadastros.add(user);
+    public void salvar(CadastroUser usuario){
+        cadastros.add(usuario);
     }
     //Salva no txt coletando com os gets, os dados dos usuários..
-    public void GravarEmArquivo(CadastroUser user) {
+    public void gravarEmArquivo(CadastroUser usuario) {
         try(BufferedWriter bw = new BufferedWriter(new FileWriter(ARQUIVO, true))){
-            bw.write(user.getNome() + ";" + user.getDataNascimento() + ";" + user.getEmail() + ";" + user.getSenha());
+            bw.write(
+                    usuario.getNome()
+                            + ";" + usuario.getDataNascimento()
+                            + ";" + usuario.getEmail()
+                            + ";" + usuario.getSenha());
             bw.newLine();
 
             //tratamento de erro.
@@ -26,7 +30,7 @@ public class CadastroUserService  {
         }
     }
 
-    public boolean ValidarLogin(String email, String senha){
+    public boolean validarLogin(String email, String senha){
         try(BufferedReader br = new BufferedReader(new FileReader(ARQUIVO))){
             String linha;
             while((linha = br.readLine()) !=null){
