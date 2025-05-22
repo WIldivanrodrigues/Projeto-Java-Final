@@ -10,41 +10,52 @@ public class Main {
         Scanner teclado = new Scanner(System.in);
         CadastroUserService userService = new CadastroUserService();
         CadastroUserController controller = new CadastroUserController(userService);
-        CadastroUser cadastro = new CadastroUser();
 
-        System.out.println("=-=-=-Cadastro de usuários-=-=-=");
+        while (true) {
+            System.out.println("\n=-=-= MENU =-=-=");
+            System.out.println("1 - Cadastrar usuário");
+            System.out.println("2 - Fazer login");
+            System.out.println("0 - Sair");
+            System.out.print("Escolha uma opção: ");
 
-        //coletando dados por meio do metodo set.
-        System.out.println("Insira o seu nome: ");
-        cadastro.setNome(teclado.nextLine());
+            String opcao = teclado.nextLine();
 
-        System.out.println("Insira sua data de nascimento: ");
-        cadastro.setDataNascimento(teclado.nextLine());
+            if (opcao.equals("1")) {
+                CadastroUser novoUsuario = new CadastroUser();
 
-        System.out.println("Insira o seu e-mail: ");
-        cadastro.setEmail(teclado.nextLine());
+                System.out.print("Nome: ");
+                novoUsuario.setNome(teclado.nextLine());
 
-        System.out.println("Insira sua senha: ");
-        cadastro.setSenha(teclado.nextLine());
+                System.out.print("Data de nascimento (DD-MM-AAAA): ");
+                novoUsuario.setDataNascimento(teclado.nextLine());
 
-        controller.cadastrarUsuario(cadastro);
+                System.out.print("E-mail: ");
+                novoUsuario.setEmail(teclado.nextLine());
 
-        System.out.println("\nUsuário cadastrado com sucesso!");
+                System.out.print("Senha: ");
+                novoUsuario.setSenha(teclado.nextLine());
 
-        System.out.println("\n=-=-= Agora faça o Login =-=-=");
+                controller.cadastrarUsuario(novoUsuario);
+                
+            } else if (opcao.equals("2")) {
 
-        System.out.println("E-mail: ");
-        String loginEmail = teclado.nextLine();
+                System.out.print("E-mail: ");
+                String email = teclado.nextLine();
 
-        System.out.println("Senha: ");
-        String loginSenha = teclado.nextLine();
+                System.out.print("Senha: ");
+                String senha = teclado.nextLine();
 
-        boolean sucesso = controller.fazerLogin(loginEmail, loginSenha);
-
-        if (sucesso) {
-            System.out.println(">>> Login efetuado com sucesso!");
-        } else {
-            System.out.println("!!! E-mail ou senha incorretos.");
+                if (controller.fazerLogin(email, senha)) {
+                    System.out.println(">>> Login efetuado com sucesso!");
+                } else {
+                    System.out.println("!!! E-mail ou senha inválidos.");
+                }
+            } else if (opcao.equals("0")) {
+                System.out.println("Saindo...");
+                break;
+            } else {
+                System.out.println("Opção inválida.");
+            }
         }
 
         teclado.close();
