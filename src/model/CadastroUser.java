@@ -2,47 +2,44 @@ package model;
 
 public class CadastroUser {
 
-    private String Nome;
-    private String DataNascimento;
-    private String Email;
-    private String Senha;
+    private String nome;
+    private String dataNascimento;
+    private String email;
+    private String senha;
 
     public CadastroUser(){
 
     }
 
-
     public String getNome() {
-        return Nome;
+        return nome;
     }
 
     public void setNome(String nome) {
-        Nome = nome;
+        this.nome = nome;
     }
 
     public String getDataNascimento() {
-        return DataNascimento;
+        return dataNascimento;
     }
 
     public void setDataNascimento(String dataNascimento) {
-        DataNascimento = dataNascimento;
+        this.dataNascimento = dataNascimento;
     }
 
     public String getEmail() {
-
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
     public String getSenha() {
-        return Senha;
+        return senha;
     }
 
     public void setSenha(String senha) {
-        this.Senha = senha;
+        this.senha = senha;
     }
 }
-
