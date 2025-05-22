@@ -1,12 +1,15 @@
 import controller.CadastroUserController;
 import model.CadastroUser;
+import service.CadastroUserService;
+
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
 
         Scanner teclado = new Scanner(System.in);
-        CadastroUserController controller = new CadastroUserController();
+        CadastroUserService userService = new CadastroUserService();
+        CadastroUserController controller = new CadastroUserController(userService);
         CadastroUser cadastro = new CadastroUser();
 
         System.out.println("=-=-=-Cadastro de usuários-=-=-=");
