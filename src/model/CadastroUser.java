@@ -5,7 +5,7 @@ public class CadastroUser {
     private String Nome;
     private String DataNascimento;
     private String Email;
-    private int Senha;
+    private String Senha;
 
     public CadastroUser(){
 
@@ -37,11 +37,11 @@ public class CadastroUser {
         Email = email;
     }
 
-    public int getSenha() {
+    public String getSenha() {
         return Senha;
     }
 
-    public void setSenha(int senha) {
+    public void setSenha(String senha) {
         this.Senha = senha;
     }
 }
