@@ -46,4 +46,22 @@ public class CadastroUserService  {
         return false;
 
     }
+    public List<CadastroUser> listarUsuarios() {
+        List<CadastroUser> usuarios = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(ARQUIVO))) {
+            String linha;
+            while ((linha = br.readLine()) != null) {
+                String[] partes = linha.split(";");
+                CadastroUser user = new CadastroUser();
+                user.setNome(partes[0]);
+                user.setDataNascimento(partes[1]);
+                user.setEmail(partes[2]);
+                user.setSenha(partes[3]);
+                usuarios.add(user);
+            }
+        } catch (IOException e) {
+            System.out.println("Erro ao ler usuários: " + e.getMessage());
+        }
+        return usuarios;
+    }
 }
