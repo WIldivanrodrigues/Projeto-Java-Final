@@ -19,6 +19,7 @@ public class Main {
         AgendamentoController agController = new AgendamentoController(agService);
         LogGestor lGestor = new LogGestor();
         GestorController gestorController = new GestorController(userService, agService);
+        CadastroUser currentUser = null;
 
         while (true) {
             System.out.println("\n=-=-= MENU PRINCIPAL =-=-=");
@@ -53,23 +54,34 @@ public class Main {
                 case "2":
                     System.out.print("E-mail: ");
                     String email = teclado.nextLine();
-
                     System.out.print("Senha: ");
                     String senha = teclado.nextLine();
 
                     if (controller.fazerLogin(email, senha)) {
-                        System.out.println(">>> Login efetuado com sucesso!");
+                        // Encontra o objeto completo do usuário
+                        for (CadastroUser u : userService.listarUsuarios()) {
+                            if (u.getEmail().equals(email) && u.getSenha().equals(senha)) {
+                                currentUser = u;
+                                break;
+                            }
+                        }
+                        System.out.println(">>> Login efetuado com sucesso! Bem-vindo(a), " + currentUser.getNome());
                     } else {
                         System.out.println("!!! E-mail ou senha inválidos.");
                     }
                     break;
 
                 case "3":
+                    if (currentUser == null) {
+                        System.out.println("Faça o login primeiro antes de agendar.");
+                        break;
+                    }
                     Agendamento ag = new Agendamento();
                     System.out.print("Data e hora (dd-mm-aaaa hh:mm): ");
                     ag.setDataHora(teclado.nextLine());
-                    System.out.print("Nome do usuário: ");
-                    ag.setNomeUsuario(teclado.nextLine());
+
+                    ag.setUserId(currentUser.getId());
+                    ag.setNomeUsuario(currentUser.getNome());
 
                     System.out.println("Tipo de serviço:");
                     System.out.println("1 - Instalação de Unhas em Gel");
@@ -144,7 +156,11 @@ public class Main {
                                         System.out.println("Nenhum usuário cadastrado.");
                                     } else {
                                         for (CadastroUser u : listaUsuarios) {
-                                            System.out.println("Nome: " + u.getNome() + " | Email: " + u.getEmail());
+                                            System.out.println(
+                                                    "ID: " + u.getId() +
+                                                            " | Nome: " + u.getNome() +
+                                                            " | Email: " + u.getEmail()
+                                            );
                                         }
                                     }
                                 } else if (opcaoGestor.equals("0")) {
