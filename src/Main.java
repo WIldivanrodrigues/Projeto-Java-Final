@@ -49,6 +49,7 @@ public class Main {
                     novoUsuario.setSenha(teclado.nextLine());
 
                     controller.cadastrarUsuario(novoUsuario);
+                    System.out.println("Usuário cadastrado com sucesso.");
                     break;
 
                 case "2":
@@ -73,10 +74,11 @@ public class Main {
 
                 case "3":
                     if (currentUser == null) {
-                        System.out.println("Faça o login primeiro antes de agendar.");
+                        System.out.println("Realize o login para seguir com o agendamento.");
                         break;
                     }
                     Agendamento ag = new Agendamento();
+                    System.out.println("Insira sua data e horário desejados: ");
                     System.out.print("Data e hora (dd-mm-aaaa hh:mm): ");
                     ag.setDataHora(teclado.nextLine());
 
@@ -143,10 +145,11 @@ public class Main {
                                     } else {
                                         for (Agendamento a : lista) {
                                             System.out.println(
-                                                    a.getDataHora() + " | " +
-                                                            a.getNomeUsuario() + " | " +
-                                                            a.getTipoServico()
-                                            );
+                                            "Id: " + a.getUserId() + " | " +
+                                           "Nome: " + a.getNomeUsuario() + " | " +
+                                            "horário: " + a.getDataHora() + " | " +
+                                            "Serviço: " + a.getTipoServico());
+                                            System.out.println("_".repeat(93));
                                         }
                                     }
                                 } else if (opcaoGestor.equals("2")) {
@@ -158,9 +161,9 @@ public class Main {
                                         for (CadastroUser u : listaUsuarios) {
                                             System.out.println(
                                                     "ID: " + u.getId() +
-                                                            " | Nome: " + u.getNome() +
-                                                            " | Email: " + u.getEmail()
-                                            );
+                                                    " | Nome: " + u.getNome() +
+                                                    " | Email: " + u.getEmail());
+                                            System.out.println("_".repeat(62));
                                         }
                                     }
                                 } else if (opcaoGestor.equals("0")) {
@@ -174,8 +177,9 @@ public class Main {
                             System.out.println("Login ou senha do gestor incorretos.");
                             System.out.print("Deseja tentar novamente? (s/n): ");
                             String tentar = teclado.nextLine();
-                            if (!tentar.equalsIgnoreCase("s")) { //
+                            if (!tentar.equalsIgnoreCase("s")) {
                                 System.out.println("Saindo do login gestor...");
+
                                 break; // Sai do loop (!autGestor)
                             }
                         }
