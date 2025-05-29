@@ -14,7 +14,6 @@ public class AgendamentoController {
 
     public void agendar(Agendamento ag) {
         agendamentoService.salvar(ag);
-        agendamentoService.gravarEmArquivo(ag);
     }
 
     public List<Agendamento> listar() {
